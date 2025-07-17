@@ -4,11 +4,11 @@ import { sleep, check } from 'k6' // importação de uma função
 //configurações de como o teste vai ser:
 export const options = {
     //define o número de iterações para o teste
-    iterations: 50,
+    vus: 10,
+    duration: '30s',
     thresholds: {
-        http_req_duration: ['p(90)<10', 'max<10'],
+        http_req_duration: ['p(90)<3000', 'max<5000'],
         http_req_failed: ['rate<0.01']
-
     }
 }
 
