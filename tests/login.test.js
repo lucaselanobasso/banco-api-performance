@@ -1,6 +1,7 @@
 import http from 'k6/http' //importação de um módulo
 import { sleep, check } from 'k6' // importação de uma função
 const postLogin = JSON.parse(open('../fixtures/postLogin.json'))
+import { pegarBaseURL } from '../utils/variaveis.js'
 
 //configurações de como o teste vai ser:
 export const options = {
@@ -20,8 +21,7 @@ export const options = {
 //o teste em si:
 export default function () {
     // Teste!
-    const url = 'http://localhost:3000/login'
-    console.log(postLogin)
+    const url = pegarBaseURL() + '/login'
     //payload é o corpo da requisição, o body!
     const payload = JSON.stringify(postLogin)
 
